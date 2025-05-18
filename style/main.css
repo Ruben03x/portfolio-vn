@@ -1,0 +1,305 @@
+/**
+ * =============================================================================
+ * This is the file where all your styling should go in.
+ * Instead of modifying the styles found in the monogatari.css file or others,
+ * you should overwrite those styles in this file.
+ *
+ * The CSS selectors shown are not an extensive list but they are the most
+ * common you might want to change. To find what other elements are available,
+ * you can take a look at the monogatari.css file or use your browser's dev
+ * tools to inspect the elements.
+ * =============================================================================
+**/
+
+/**
+ * ===========================
+ * General Styling
+ * ===========================
+**/
+
+/* General Style */
+body {}
+
+/* Simple Button styles*/
+button {}
+
+/* Simple Button Style on Hover */
+button:hover {}
+
+/* General Styling for Menu Screens */
+[data-screen] {}
+
+/**
+ * ===========================
+ * Main Menu Styling
+ * ===========================
+**/
+
+/* Main Menu Styling */
+[data-screen="main"] {}
+
+/* Main Menu Buttons Styling */
+[data-screen="main"] button {}
+
+/**
+ * ===========================
+ * Save and Load Menus Styling
+ * ===========================
+**/
+
+/* Slots Style */
+[data-component="save-slot"] figure {}
+
+/* Slot's Image Style */
+[data-component="save-slot"] img {}
+
+/* Slots Title Style */
+[data-component="save-slot"] figcaption {}
+
+/* Slots Delete Button Style */
+[data-component="save-slot"] button {}
+
+/**
+ * ===========================
+ * Game Elements Styling
+ * ===========================
+**/
+
+/* ==========================================================================
+   Global Colour Palette — unified "Intro" gold on deep charcoal background
+   ========================================================================== */
+/* ==========================================================================
+   Global Colour Palette — unified "Intro" gold on deep charcoal background
+   ========================================================================== */
+:root {
+  --bg-main: #1e1e1e;          /* deep charcoal */
+  --bg-panel: #242424;         /* slightly lighter panels */
+  --bg-hover: #2f2f2f;         /* hover darken */
+  --fg-primary: #ffe082;       /* warm gold – used everywhere */
+  --fg-muted: #cccccc;         /* subtle text (optional) */
+  --radius: 10px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, .25);
+  --font-body: 'Cinzel Decorative', serif;
+}
+
+/* ==========================
+   Base Layout & Typography
+   ========================== */
+body {
+  margin: 0;
+  background: var(--bg-main);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Remove default button look so we can style freely */
+button {
+  font-family: inherit;
+  color: var(--fg-primary);
+  background: var(--bg-panel);
+  border: none;
+  border-radius: var(--radius);
+  padding: .7em 1.4em;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background .15s, transform .15s, box-shadow .15s;
+}
+button:hover {
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   Screens & Panels (Main, Save/Load, etc.)
+   ========================== */
+[data-screen] {
+  background: var(--bg-main);
+  color: var(--fg-primary);
+}
+[data-screen] button {
+  margin: .4em auto;
+}
+
+/* ==========================
+   Save / Load Slot visuals
+   ========================== */
+[data-component="save-slot"] figure {
+  background: var(--bg-panel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+[data-component="save-slot"] img {
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+[data-component="save-slot"] figcaption {
+  padding: .6em;
+  color: var(--fg-primary);
+}
+[data-component="save-slot"] button {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* ==========================
+   In‑Game Elements
+   ========================== */
+/* Choice Buttons */
+[data-component="choice-container"] button {
+  display: block;
+  width: 100%;
+  margin: .6em 0;
+}
+[data-component="choice-container"] button:hover {
+  background: var(--bg-hover);
+}
+
+/* Text Box */
+[data-component="text-box"] {
+  position: fixed;
+  left: 50%;
+  bottom: 2.5em;
+  transform: translateX(-50%);
+  min-width: 340px;
+  max-width: 90vw;
+  background: var(--bg-panel);
+  border: 1px solid var(--fg-primary);
+  border-radius: 18px 18px 10px 10px;
+  padding: 1.4em 2em 1.1em;
+  color: var(--fg-primary);
+  box-shadow: var(--shadow);
+  z-index: 1000;
+}
+
+/* Character name (if you use it) */
+[data-ui="who"] {
+  color: var(--fg-primary);
+  font-weight: 600;
+}
+
+/* Centered text (e.g., narration) */
+[data-component="centered-dialog"] {
+  background: var(--bg-panel);
+  color: var(--fg-primary);
+  border-radius: var(--radius);
+  padding: 1.2em 2em;
+  box-shadow: var(--shadow);
+}
+
+/* ==========================
+   Quick Menu (mobile & desktop) — HIDDEN for portfolio
+   ========================== */
+[data-component="quick-menu"] {
+  display: none !important;
+}
+[data-component="quick-menu"] span {
+  color: var(--fg-primary);
+  padding: .3em .5em;
+  cursor: pointer;
+  transition: color .15s;
+}
+[data-component="quick-menu"] span:hover {
+  color: var(--fg-muted);
+}
+
+/* ==========================
+   Range Sliders (volume bar, etc.)
+   ========================== */
+input[type=range]::-webkit-slider-runnable-track,
+input[type=range]::-moz-range-track,
+input[type=range]::-ms-fill-lower,
+input[type=range]::-ms-fill-upper {
+  background: var(--fg-primary);
+}
+
+/* ==========================
+   Responsive tweaks (keep brief — colours already unified)
+   ========================== */
+@media (min-width: 62em) {
+  [data-component="text-box"] { max-width: 60vw; }
+}
+
+
+
+/* Character Images Styles */
+[data-screen="game"] [data-character] {}
+
+/* Other Images Styles */
+[data-screen="game"] [data-image] {}
+
+/**
+ * ===========================
+ * Quick Menu Styling
+ * ===========================
+**/
+
+/* These styles are applied to the Mobile version of the Quick Menu */
+
+/* Quick Menu Style */
+[data-component="quick-menu"] {}
+
+/* Quick Menu Buttons Style */
+[data-component="quick-menu"] span {}
+
+/* Quick Menu Buttons Style on Hover */
+[data-component="quick-menu"] span:hover {}
+
+/* Quick Menu Buttons Icon Style */
+[data-component="quick-menu"]>span>.fa {}
+
+/**
+ * ===========================
+ * Range Styling
+ * ===========================
+**/
+
+/* Use the background property to set a color for these */
+input[type=range]:focus::-webkit-slider-runnable-track {}
+
+input[type=range]::-webkit-slider-runnable-track {}
+
+input[type=range]:focus::-ms-fill-upper {}
+
+input[type=range]:focus::-ms-fill-lower {}
+
+input[type=range]::-moz-range-track {}
+
+input[type=range]::-ms-fill-lower {}
+
+input[type=range]::-ms-fill-upper {}
+
+/** Medium Screens, Phablets (601px) **/
+@media screen and (min-width: 37.56255em) {
+	/* Styles for the desktop version of the Quick Menu */
+
+	/* Quick Menu Style */
+	[data-component="quick-menu"] {}
+
+	/* Quick Menu Buttons Style */
+	[data-component="quick-menu"] span {}
+
+	/* Quick Menu Buttons Style on Hover */
+	[data-component="quick-menu"] span:hover {}
+}
+
+/** Medium Devices, Tablets (992px)**/
+@media screen and (min-width: 62em) {}
+
+/** HD Screen, Large Devices, Wide Screens, Desktop (1200px) **/
+@media screen and (min-width: 75em) {}
+
+/** Full HD Screen, Large Devices, Wide Screens, Large Desktops (1920px) **/
+@media screen and (min-width: 120em) {}
+
+/** Retina Screen , Large Devices, Wide Screens(2560px) **/
+@media screen and (min-width: 160em) {}
+
+/** 4k Screens, Large Devices, Wide Screens (3840px) **/
+@media screen and (min-width: 240em) {}
+
+/** 5k Screens, Large Devices, Wide Screens (5000px) **/
+@media screen and (min-width: 312.5em) {}
+
+/** 8k Screens, Large Devices, Wide Screens (8000px) **/
+@media screen and (min-width: 500em) {}
